@@ -21,4 +21,13 @@ require 'bike.rb'
       expect {subject.release_bike}.to raise_error('shit there is no bike!')
     end
   end
+
+  describe DockingStation do
+    it "raises error when a docking station is full" do
+      subject.dock(Bike.new)
+      expect {subject.dock(Bike.new)}.to raise_error('docking station is full')
+    end
+  end
+
+
 end

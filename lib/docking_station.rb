@@ -10,7 +10,8 @@ class DockingStation
   end
 
   def dock(bike)
-    @bike = bike #docking the bike at the slot available at docking station
+    raise 'docking station is full' if @bike
+    @bike = bike #docking the argument of dock method into slot
   end
 
 end
