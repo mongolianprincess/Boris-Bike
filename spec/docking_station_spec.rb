@@ -1,4 +1,5 @@
 require 'docking_station.rb'
+require 'bike.rb'
 
   describe DockingStation do
     it { is_expected.to respond_to :release_bike }
@@ -6,8 +7,8 @@ require 'docking_station.rb'
 
   describe DockingStation do
     it "creates a bike when release_bike is called" do
+      subject.dock(Bike.new)
       bike = subject.release_bike
-      expect(bike).to be_instance_of Bike
       expect(bike).to be_working
   end
 
@@ -15,4 +16,9 @@ require 'docking_station.rb'
     it { is_expected.to respond_to(:dock).with(1).arguments }
   end
 
+  describe DockingStation do
+    it "raises error when there are no bikes available" do
+      expect {subject.release_bike}.to raise_error('shit there is no bike!')
+    end
+  end
 end
