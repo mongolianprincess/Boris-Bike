@@ -24,10 +24,10 @@ require 'bike.rb'
 
   describe DockingStation do
     it "raises error when a docking station is full" do
-      subject.dock(Bike.new)
+      20.times {subject.dock(Bike.new)}
       expect {subject.dock(Bike.new)}.to raise_error('docking station is full')
+      #when 21st bike is docked, it will raise error since capacity if 20
     end
   end
-
 
 end
