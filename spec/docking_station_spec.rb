@@ -1,6 +1,7 @@
 require 'docking_station.rb'
 
 describe DockingStation do
+  describe '#release_bike' do
     it { is_expected.to respond_to :release_bike }
 
     it "creates a bike when release_bike is called" do
@@ -9,6 +10,12 @@ describe DockingStation do
       expect(bike).to be_working
    end
 
+   it "raises error when there are no bikes available" do
+     expect {subject.release_bike}.to raise_error 'shit there is no bike!'
+   end
+ end
+
+ describe '#dock' do
     it { is_expected.to respond_to(:dock).with(1).arguments }
 
     it "raises error when there are no bikes available" do
@@ -20,5 +27,5 @@ describe DockingStation do
       expect {subject.dock(Bike.new)}.to raise_error('docking station is full')
       #when 21st bike is docked, it will raise error since capacity if 20
     end
-
+  end
 end
