@@ -28,4 +28,16 @@ describe DockingStation do
       #when 21st bike is docked, it will raise error since capacity if 20
     end
   end
+  describe '#capacity' do
+    it "has a default capacity" do
+      expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
+    end
+  end
+  describe 'initialization' do
+    it "specify another capacity other than default" do
+       d = DockingStation.new(30)
+      expect(d.capacity).to eq(30)
+    end
+  end
+
 end
